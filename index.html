@@ -46,6 +46,7 @@
 /* 2 BASE */
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+main > section[id],footer[id]{scroll-margin-top:86px}
 body{
   margin:0;background:var(--paper);color:var(--ink);
   font-family:var(--sans);font-size:15px;line-height:1.6;font-weight:400;
@@ -524,13 +525,13 @@ body.menu-open .menu__list li:nth-child(6){transition-delay:.42s}
 @media (max-width:760px){
   .gal{
     flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;
-    scroll-snap-type:x mandatory;scroll-padding-inline:var(--gut);
+    scroll-snap-type:x mandatory;scroll-padding-inline-start:var(--gut);
     padding:2px var(--gut) 10px;margin-inline:calc(-1 * var(--gut));
     scrollbar-width:none;-ms-overflow-style:none;
-    --h:clamp(320px,78vw,430px);
+    --h:clamp(340px,62vh,560px);
   }
   .gal::-webkit-scrollbar{display:none}
-  .gal > .plate{scroll-snap-align:center}
+  .gal > .plate{scroll-snap-align:start}
   .gal .shot{box-shadow:0 6px 22px rgba(26,26,24,.16)}
   .carousel-dots{display:flex;justify-content:center;gap:7px;margin-top:14px}
   .carousel-dots i{width:6px;height:6px;border-radius:50%;background:rgba(190,48,37,.28);transition:background .3s,width .3s}
@@ -541,6 +542,8 @@ body.menu-open .menu__list li:nth-child(6){transition-delay:.42s}
   .shell{min-width:0}
   /* two-up stat cards instead of one tall stack */
   .bignums{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  .bignums > .bignum:last-child:nth-child(odd){grid-column:1 / -1}
+  .deck > *:last-child:nth-child(odd){grid-column:1 / -1}
   .bignum{padding:16px 10px;border-radius:16px}
   .bignum .v{font-size:clamp(22px,7.4vw,32px)}
   .bignum .k{font-size:9.5px;letter-spacing:.06em;margin-top:8px}
@@ -556,6 +559,16 @@ body.menu-open .menu__list li:nth-child(6){transition-delay:.42s}
   .cover__word{font-size:clamp(36px,13.6vw,120px)}
   .cover__sub{font-size:clamp(15px,4.6vw,24px)}
   .cover__arrow{margin-top:14px}
+  .sectitle{font-size:clamp(19px,6vw,28px)}
+  .sectitle--big{font-size:clamp(22px,7vw,34px)}
+  .rubric{font-size:clamp(12.5px,4vw,16px);margin-bottom:16px}
+  .sechead{margin-bottom:22px}
+  .seclede{font-size:15px}
+  .pill{border-radius:20px;padding:16px 20px;font-size:14px}
+  .pills li,.pillbtn{padding:10px 16px;font-size:13px}
+  .contactbox{border-radius:20px}
+  .notes h3{font-size:15px}
+  .band{padding:clamp(44px,11vw,70px) 0}
   /* clay props stay, just smaller and pinned to the margins */
   .d3--s{width:clamp(34px,10vw,54px)}
   .d3--m{width:clamp(40px,12vw,64px)}
@@ -713,7 +726,7 @@ body.menu-open .menu__list li:nth-child(6){transition-delay:.42s}
     </div>
     <div class="cover__foot">
       <p>&copy;<span id="yr">2026</span></p>
-      <p>Get in touch</p>
+      <a href="#contact">Get in touch <span aria-hidden="true">&#8599;</span></a>
     </div>
   </div>
 </section>
@@ -770,6 +783,8 @@ body.menu-open .menu__list li:nth-child(6){transition-delay:.42s}
 
 <!-- STATEMENT ------------------------------------------------------------- -->
 <section class="band">
+  <span class="d3 d3--b d3--tr d3--m"><svg><use href="#i-spark"/></svg></span>
+  <span class="d3 d3--c d3--bl d3--s"><svg><use href="#i-heart"/></svg></span>
   <div class="shell">
     <h2 class="sectitle sectitle--big tr" style="color:var(--ink)">I don't just want content to look good. <span style="color:var(--red)">I want to know why it worked.</span></h2>
     <ul class="pills mt rv" data-d="1">
@@ -884,6 +899,7 @@ body.menu-open .menu__list li:nth-child(6){transition-delay:.42s}
 
 <!-- CASE / SAKSHI MALIK --------------------------------------------------- -->
 <section class="band" id="sakshi">
+  <span class="d3 d3--a d3--tl d3--s"><svg><use href="#i-play"/></svg></span>
   <div class="shell">
     <div class="sechead rv"><b>Sakshi Malik</b><i>/ Personal Branding &bull; Influencer Marketing</i></div>
     <h2 class="sectitle tr">Taking the page from being seen to being impossible to ignore.</h2>
@@ -980,6 +996,7 @@ body.menu-open .menu__list li:nth-child(6){transition-delay:.42s}
 
 <!-- CASE / SATYAWART KADIAN ----------------------------------------------- -->
 <section class="band" id="satyawart">
+  <span class="d3 d3--b d3--tl d3--s"><svg><use href="#i-spark"/></svg></span>
   <div class="shell">
     <div class="sechead rv"><b>Satyawart Kadian</b><i>/ Personal Branding</i></div>
     <h2 class="sectitle tr">Building a personality around the person behind the sport.</h2>
@@ -1038,6 +1055,7 @@ body.menu-open .menu__list li:nth-child(6){transition-delay:.42s}
 
 <!-- CASE / NAMMA KUNDI ---------------------------------------------------- -->
 <section class="band band--tint" id="namma">
+  <span class="d3 d3--a d3--tr d3--s"><svg><use href="#i-chat"/></svg></span>
   <div class="shell">
     <div class="sechead rv"><b>Namma Kundi</b><i>/ Food &amp; Beverage</i></div>
     <h2 class="sectitle tr">More creators. More variety. A more active brand presence.</h2>
@@ -1076,6 +1094,7 @@ body.menu-open .menu__list li:nth-child(6){transition-delay:.42s}
 
 <!-- CASE / PRADEEP PROPERTIES --------------------------------------------- -->
 <section class="band" id="pradeep">
+  <span class="d3 d3--c d3--tr d3--s"><svg><use href="#i-phone"/></svg></span>
   <div class="shell">
     <div class="sechead rv"><b>Pradeep Properties</b><i>/ Real Estate</i></div>
     <h2 class="sectitle tr">Turning conversations into potential leads.</h2>
@@ -1139,6 +1158,7 @@ body.menu-open .menu__list li:nth-child(6){transition-delay:.42s}
 
 <!-- CASE / LYDC LONDON ---------------------------------------------------- -->
 <section class="band band--tint" id="lydc">
+  <span class="d3 d3--c d3--tl d3--s"><svg><use href="#i-spark"/></svg></span>
   <div class="shell">
     <div class="sechead rv"><b>LYDC London</b><i>/ Fashion &bull; Influencer Marketing</i></div>
     <h2 class="sectitle tr">From &ldquo;Should we collaborate?&rdquo; to &ldquo;The Reel is live.&rdquo;</h2>
@@ -1245,6 +1265,7 @@ body.menu-open .menu__list li:nth-child(6){transition-delay:.42s}
 
 <!-- AI -------------------------------------------------------------------- -->
 <section class="band band--tint" id="ai">
+  <span class="d3 d3--b d3--tr d3--m"><svg><use href="#i-rocket"/></svg></span>
   <div class="shell">
     <div class="sechead rv"><b>Leveraging AI</b></div>
     <h2 class="sectitle tr">AI does the legwork. The thinking stays mine.</h2>
@@ -1262,6 +1283,7 @@ body.menu-open .menu__list li:nth-child(6){transition-delay:.42s}
 
 <!-- EXPERIENCE ------------------------------------------------------------ -->
 <section class="band" id="experience">
+  <span class="d3 d3--c d3--tr d3--s"><svg><use href="#i-rocket"/></svg></span>
   <div class="shell">
     <div class="sechead rv"><b>Experience</b></div>
     <h2 class="sectitle tr">The short version</h2>
@@ -1283,6 +1305,7 @@ body.menu-open .menu__list li:nth-child(6){transition-delay:.42s}
 
 <!-- PROCESS --------------------------------------------------------------- -->
 <section class="band band--tint" id="process">
+  <span class="d3 d3--a d3--tl d3--s"><svg><use href="#i-play"/></svg></span>
   <div class="shell">
     <div class="sechead rv"><b>Process</b></div>
     <h2 class="sectitle tr">How I usually work</h2>
@@ -1377,6 +1400,12 @@ body.menu-open .menu__list li:nth-child(6){transition-delay:.42s}
   });
   document.querySelectorAll('.menu a').forEach(function(a){ a.addEventListener('click', closeMenu); });
   document.getElementById('menux').addEventListener('click', closeMenu);
+
+  /* Links still waiting on a real URL must not fling the reader back to the top */
+  document.querySelectorAll('a[href="#"]').forEach(function(a){
+    a.setAttribute('aria-disabled','true');
+    a.addEventListener('click', function(e){ e.preventDefault(); });
+  });
 
   function fmt(n, dec){
     var s = dec ? n.toFixed(dec) : Math.round(n).toString(), p = s.split('.');
